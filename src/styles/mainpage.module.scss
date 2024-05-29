@@ -1,0 +1,123 @@
+@use "config";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  .short-info {
+    width: 90%;
+    background-image: url("../img/photo-main1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-bottom: 250px;
+    margin-bottom: 50px;
+    .text-container {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      .title {
+        font-family: 'Ferry Font', 'Inter Font', sans-serif;
+        font-size: 5em;
+        margin-bottom: 20px;
+      }
+      .description {
+        font-size: 20px;
+        margin-bottom: 50px;
+      }
+      button {
+        @include config.default-button;
+      }
+    }
+  }
+
+  .why-to-use-block {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    .title {
+      margin-bottom: 50px;
+      span {
+        font-family: 'Ferry Font', 'Inter Font', sans-serif;
+        font-size: 45px;
+      }
+    }
+    .carousel-item {
+      height: 175px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      padding: 25px;
+      box-shadow: 0 0 10px 1px gray;
+      border-radius: 10px;
+      margin: 10px;
+      img {
+        width: 64px;
+        margin-bottom: 25px;
+        filter: invert(35%) sepia(85%) saturate(831%) hue-rotate(140deg) brightness(100%) contrast(98%);
+      }
+      p {
+        font-size: 18px;
+      }
+    }
+    .img-placeholder {
+      width: 100%;
+      height: 40vw;
+      background-image: url("../img/photo-main2.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  .rates {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .title {
+      margin-bottom: 100px;
+      span {
+        font-family: 'Ferry Font', 'Inter Font', sans-serif;
+        font-size: 45px;
+      }
+    }
+  }
+}
+
+@media (max-device-width: 1000px) {
+  .main {
+    .short-info {
+      width: 100%;
+      background-position: bottom;
+      min-height: 1300px;
+      .text-container {
+        .title {
+          font-size: 4em;
+        }
+        .description {
+          font-size: 2.8em;
+        }
+        button {
+          @include config.default-button;
+          width: 100%;
+          font-size: 3em;
+          height: auto;
+          padding: 20px 0;
+          border-radius: 10px;
+        }
+      }
+    }
+    .why-to-use-block {
+      .carousel-item {
+        height: 200px;
+        flex-direction: row;
+        p {
+          font-size: 2em;
+          word-break: break-word;
+        }
+      }
+    }
+  }
+}

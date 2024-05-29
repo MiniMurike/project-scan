@@ -1,0 +1,66 @@
+@use "config";
+
+.item {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0.1em lightgray;
+  padding: 30px;
+  font-size: 1.3em;
+  .source {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    color: gray;
+    .date {
+      margin-right: 20px;
+    }
+    .link a {
+      color: gray;
+    }
+  }
+  .title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  .category {
+    background-color: config.$subColorOrange;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 5px 30px;
+    color: black;
+    margin-bottom: 30px;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+    color: gray;
+    button {
+      @include config.default-button;
+      background-color: config.$subColorCyan;
+      color: black;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .item {
+    .category {
+      font-size: 1.3em;
+    }
+    .footer {
+      button {
+        font-size: 1.7em;
+        height: 80px;
+        width: fit-content;
+        padding: 5px 30px;
+        border-radius: 10px;
+      }
+      p {
+        font-size: 1.5em;
+      }
+    }
+  }
+}

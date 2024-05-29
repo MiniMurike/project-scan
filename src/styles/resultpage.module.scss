@@ -1,0 +1,78 @@
+@use "config";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  .loader {
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../img/resultpage-img.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    .title {
+      font-family: "Ferry Font", sans-serif;
+      font-size: 4em;
+      &:nth-child(2) {
+        margin-bottom: 40px;
+      }
+    }
+    .description {
+      font-size: 2em;
+    }
+  }
+  .content-block {
+    margin-bottom: 50px;
+    & > p {
+      margin-bottom: 20px;
+    }
+    .content-title {
+      font-family: "Ferry Font", sans-serif;
+      font-size: 3em;
+    }
+    .content-description {
+      font-size: 1.8em;
+      color: #888;
+    }
+  }
+  .documents-block {
+    display: flex;
+    flex-direction: column;
+    .documents-title {
+      font-family: "Ferry Font", sans-serif;
+      font-size: 3em;
+      margin-bottom: 50px;
+    }
+    .documents-content {
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-gap: 50px;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      button {
+        @include config.default-button;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .main {
+    .loader {
+      background-position: right bottom;
+      min-height: 900px;
+    }
+    .documents-block {
+      .documents-content {
+        grid-template-columns: auto;
+        font-size: 1.2em;
+      }
+    }
+  }
+}

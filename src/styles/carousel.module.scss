@@ -1,0 +1,130 @@
+@use "config";
+
+.carousel {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-gap: 10px;
+  min-height: 200px;
+  font-size: 1.8em;
+  .content {
+    border: 2px solid config.$mainColorCyan;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .header {
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: config.$mainColorCyan;
+      color: white;
+    }
+    .data {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      overflow: scroll;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      height: 100%;
+      .data-item {
+        height: 90%;
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .divider {
+        display: flex;
+        width: 2px;
+        height: 80%;
+        border-radius: 5px;
+        background-color: black;
+        opacity: 0.3;
+      }
+    }
+  }
+  .btn-container {
+    display: flex;
+    align-items: center;
+    .btn {
+      display: flex;
+      transform: rotate(45deg);
+      height: 25px;
+      width: 25px;
+      border-width: 3px;
+      border-style: solid;
+      border-color: #bbb;
+      cursor: pointer;
+      transition-duration: 0.2s;
+      &:hover {
+        border-color: #555;
+      }
+    }
+    &.scroll-left {
+      justify-content: flex-end;
+      .btn {
+        border-width: 0 0 3px 3px;
+      }
+    }
+    &.scroll-right .btn {
+      border-width: 3px 3px 0 0;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .carousel {
+    .content {
+      font-size: 2em;
+      flex-direction: column;
+      border-radius: 25px;
+      .header {
+        display: grid;
+        grid-template-columns: repeat(3, 30%);
+        justify-items: center;
+        align-items: center;
+        height: 150px;
+        font-size: 0.8em;
+        flex-direction: row;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+        padding: 0 20px;
+      }
+      .data {
+        .divider {
+          display: none;
+        }
+        .data-item {
+          font-size: 0.7em;
+          display: grid;
+          grid-template-columns: repeat(3, 30%);
+          justify-items: center;
+          grid-gap: 10px;
+          width: 100%;
+          padding: 0 20px;
+        }
+      }
+    }
+    .btn-container {
+      align-items: flex-end;
+      margin-bottom: 40px;
+       .btn {
+         width: 50px;
+         height: 50px;
+         &:hover {
+         }
+       }
+       &.scroll-left {
+         .btn {
+           border-width: 0 0 10px 10px;
+         }
+       }
+       &.scroll-right .btn {
+         border-width: 10px 10px 0 0;
+       }
+     }
+  }
+}

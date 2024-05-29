@@ -1,0 +1,42 @@
+@use "config";
+@use "header.module" as header;
+
+.footer {
+  height: 150px;
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  background-color: config.$mainColorCyan;
+  color: white;
+  z-index: 0;
+
+  .logo {
+    @include header.logo-params;
+  }
+
+  .info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-right: config.$contentPadding;
+    text-align: right;
+    .address {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      span {
+        margin: 0;
+        &:last-of-type {
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .copyright {
+      color: white;
+      font-size: 12px;
+    }
+  }
+}

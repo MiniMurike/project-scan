@@ -1,0 +1,16 @@
+@use "config";
+
+.plans {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 30%);
+  grid-template-rows: auto;
+  grid-gap: 50px;
+}
+
+@media (max-width: 1000px) {
+  .plans {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+}

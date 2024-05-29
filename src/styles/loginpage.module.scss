@@ -1,0 +1,199 @@
+@use "config";
+
+.main {
+  display: grid;
+  grid-template-columns: 50% 30%;
+  grid-gap: 0 5%;
+  justify-content: center;
+  .title {
+    span {
+      font-family: 'Ferry Font', 'Inter Font', sans-serif;
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 3em;
+    }
+  }
+  .login-block {
+    box-shadow: 0 0 10px 1px gray;
+    border-radius: 10px;
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 20px;
+    &::before {
+      content: url("../img/login-lock.svg");
+      position: absolute;
+      transform: translate(-60px, -50px);
+    }
+    .switch-type-block {
+      display: grid;
+      justify-items: center;
+      justify-content: center;
+      grid-template-columns: 40% 50%;
+      grid-gap: 30px;
+      margin: 20px 0 50px;
+      .btn-container {
+        cursor: pointer;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+      label {
+        display: flex;
+        width: 100%;
+      }
+      span {
+        width: 100%;
+        height: 100%;
+        color: gray;
+        font-size: 1.2em;
+        border-bottom: 2px solid gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      input[type=radio] {
+        appearance: none;
+      }
+      input[type=radio]:checked ~ span {
+        border-color: config.$mainColorCyan;
+        color: config.$mainColorCyan;
+      }
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      form {
+        .data-field {
+          p {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            color: gray;
+          }
+          input {
+            width: 100%;
+            box-sizing: border-box;
+            height: 45px;
+            border-radius: 5px;
+            border: 2px solid rgba(200, 200, 200, 0.8);
+            font-size: 1.3em;
+            padding: 0 10px;
+          }
+          .error-msg-handler {
+            text-align: center;
+            margin: 5px 0 25px;
+            color: red;
+            font-size: 0.9em;
+            visibility: hidden;
+          }
+        }
+        button[type=submit] {
+          width: 100%;
+          height: 75px;
+          background-color: config.$subColorBlue;
+          color: white;
+          font-size: 1.6em;
+          border-radius: 10px;
+          &[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+        }
+      }
+      .recover-pass {
+        margin: 25px auto 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .alt-login-container {
+        p {
+          font-size: 1.2em;
+          color: gray;
+        }
+        .alt-login {
+          button {
+            width: 100px;
+            height: 30px;
+            background-repeat: no-repeat;
+            background-size: 60%;
+            background-position: center;
+            border: 1px solid config.$subColorBlue;
+            margin: 10px;
+            padding: 0 20px;
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+          .btn-google {
+            background-image: url("../img/Google-logo.svg");
+          }
+          .btn-yandex {
+            background-image: url("../img/Yandex-logo.svg");
+          }
+          .btn-facebook {
+            background-image: url("../img/Facebook-logo.svg");
+          }
+        }
+      }
+    }
+  }
+  .img-placeholder {
+    margin-left: 20%;
+    img {
+      color: white;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    .title {
+      margin-bottom: 100px;
+    }
+    .login-block {
+      font-size: 2em;
+      &::before {
+        transform: translate(700px, -100px) scale(1.5);
+      }
+      .content {
+        form {
+          .data-field {
+            input {
+              height: 100px;
+            }
+          }
+          button[type=submit] {
+            height: 100px;
+          }
+          .alt-login-container {
+            .alt-login {
+              display: flex;
+              flex-direction: row;
+              justify-content: space-evenly;
+              button {
+                width: 33%;
+                height: 65px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .img-placeholder {
+      display: flex;
+      justify-content: center;
+      margin: 25px 0 0;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

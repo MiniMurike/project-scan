@@ -1,0 +1,40 @@
+$mainColorCyan: #029491;
+$mainColor1: $mainColorCyan;
+
+$subColorOrange: #FFB64F;
+$subColor1: $subColorOrange;
+
+$subColorCyan: #7CE3E1;
+$subColor2: $subColorCyan;
+
+$subColorBlue: #5970FF;
+$subColor3: $subColorBlue;
+
+$contentPadding: 50px;
+
+@font-face {
+  font-family: 'Ferry Font';
+  src: url("../fonts/ferry_black.otf") format('opentype');
+}
+
+@font-face {
+  font-family: 'Inter Font';
+  src: url("../fonts/Inter-VariableFont_slnt,wght.ttf") format('truetype');
+}
+
+@mixin default-button {
+  width: 335px;
+  height: 60px;
+  background-color: $subColorBlue;
+  color: white;
+  border-radius: 5px;
+  font-size: 22px;
+  transition-duration: 0.2s;
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
+}

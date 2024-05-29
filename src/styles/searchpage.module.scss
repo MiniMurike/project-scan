@@ -1,0 +1,233 @@
+@use "config";
+
+.main {
+  display: flex;
+  flex-direction: row;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    .header {
+      font-size: 1.5em;
+      margin-bottom: 50px;
+      .title {
+        font-family: "Ferry Font", sans-serif;
+        font-size: 2.5em;
+        &:nth-child(2) {
+          margin-bottom: 25px;
+        }
+      }
+      .description {
+        &:nth-child(2) {
+          margin-bottom: 25px;
+        }
+      }
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-template-rows: repeat(4, auto);
+      grid-auto-flow: column;
+      grid-gap: 5px;
+      font-size: 1.4em;
+      box-shadow: 0 0 10px 1px gray;
+      border-radius: 10px;
+      padding: 25px 60px 45px 25px;
+      white-space: nowrap;
+      .input-field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 25px;
+        &:has(.error-field) {
+          margin-bottom: 0;
+        }
+        .input-header {
+          margin-bottom: 25px;
+        }
+        label {
+          margin-bottom: 25px;
+        }
+        .error-field {
+          color: red;
+          text-align: center;
+          font-size: 0.7em;
+          width: 70%;
+          margin-top: 5px;
+          visibility: hidden;
+        }
+        input[type=text], input[type=date], select {
+          border-radius: 5px;
+          border: 1px solid gray;
+          width: 70%;
+          text-align: center;
+          height: 50px;
+          font-size: 0.8em;
+        }
+        label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          input[type=checkbox] {
+            appearance: none;
+            &[checked] ~ span::before {
+              background-image: url("../img/list-item.png");
+              background-repeat: no-repeat;
+              background-size: 80%;
+              background-position: center;
+            }
+            &[disabled] ~ span {
+              opacity: 0.4;
+              cursor: not-allowed;
+              &::before {
+                opacity: 0.4;
+              }
+            }
+          }
+          span {
+            display: flex;
+            align-items: center;
+            &::before {
+              content: "";
+              width: 1em;
+              height: 1em;
+              display: inline-block;
+              border: 1px solid black;
+              margin-right: 10px;
+            }
+          }
+        }
+        &.date-field {
+          display: flex;
+          justify-content: center;
+          .date-input-container {
+            display: flex;
+            flex-direction: row;
+            .pseudo-container {
+              width: fit-content;
+              &:first-child {
+                margin-right: 20px;
+              }
+              &:has(input[type=text])::after {
+                content: "";
+                position: absolute;
+                border: 10px solid;
+                border-color: #d9d9d9 transparent transparent transparent;
+                transform: translate(-40px, 30px);
+              }
+            }
+            input[type=text], input[type=date] {
+              min-width: 200px;
+              max-width: 200px;
+              padding: 0 10px;
+            }
+          }
+          .error-field {
+            width: 100%;
+          }
+        }
+      }
+      .checkbox-field {
+        grid-row: 1 / 4;
+      }
+      .submit-field {
+        display: flex;
+        flex-direction: column;
+        align-items: center;justify-content: flex-end;
+        button {
+          @include config.default-button;
+        }
+        p {
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+
+  .images-placeholder {
+    display: grid;
+    grid-template-rows: 30% 70%;
+    width: 100%;
+    .filesImg-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40%;
+      img:last-child {
+        margin-right: 20%;
+      }
+    }
+    div:last-child img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .main {
+    .content {
+      .header {
+        width: 80%;
+        .description {
+          font-size: 1.5em;
+        }
+      }
+      .mobile-file {
+        position: absolute;
+        right: 0;
+        transform: translate(-120px, 150px);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        font-size: 3em;
+        .input-field {
+          input[type=text], input[type=date], select {
+            width: 100%;
+            height: 100px;
+          }
+          &.date-field {
+            .date-input-container {
+              display: flex;
+              flex-direction: column;
+              .pseudo-container {
+                width: 100%;
+                input {
+                  min-width: 100%;
+                  max-width: 100%;
+                  &:nth-child(1) {
+                    margin-bottom: 20px;
+                  }
+                }
+                &:has(input[type=text])::after {
+                  content: "";
+                  position: absolute;
+                  border: 30px solid;
+                  border-color: #d9d9d9 transparent transparent transparent;
+                  transform: translate(-110px, 40px);
+                }
+              }
+            }
+          }
+        }
+        .checkbox-field {
+          display: none;
+        }
+        .submit-field {
+          button {
+            @include config.default-button;
+            width: 100%;
+            font-size: 1.2em;
+            height: 100px;
+          }
+        }
+      }
+    }
+    .images-placeholder {
+      width: 100%;
+      height: 100%;
+      .search-img {
+        min-height: 1000px;
+      }
+    }
+  }
+}
