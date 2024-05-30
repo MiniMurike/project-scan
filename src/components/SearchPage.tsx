@@ -64,8 +64,13 @@ function SearchPage(props) {
                 inn.split("").map((value, index) => {
                     if (index != 9) sumResult += value * numCoefficient[index];
                 })
+                console.log(`sumresult = ${sumResult}`);
                 sumResult %= 11;
-                if (inn[9] != sumResult) throw "";
+                console.log(`sumresult % 11 = ${sumResult}`)
+                console.log(`last digit = ${inn[9]}`)
+                console.log(typeof inn[9])
+                console.log(typeof sumResult)
+                if (inn[9] != sumResult % 10) throw "";
 
                 updateValidationFieldsState({
                     ...validationFields,
